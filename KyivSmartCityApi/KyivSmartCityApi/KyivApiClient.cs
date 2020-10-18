@@ -27,7 +27,7 @@ namespace KyivSmartCityApi
 
         public async Task<List<Feed>> GetFeeds()
         {
-            var res = new { Feed = JsonConvert.DeserializeObject<List<Feed>>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync()) };
+            var res = JsonConvert.DeserializeObject<Result>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync());
             return res.Feed;
         }
     }
