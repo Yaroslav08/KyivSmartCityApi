@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KyivSmartCityApi.Settings;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,7 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("last_name")]
         public string Lastname { get; set; }
         [JsonProperty("birthday")]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime Birthday { get; set; }
         [JsonProperty("gender")]
         public int Gender { get; set; }

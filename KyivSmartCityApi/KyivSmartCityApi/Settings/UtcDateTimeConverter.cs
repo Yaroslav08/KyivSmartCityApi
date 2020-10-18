@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KyivSmartCityApi.Settings
 {
-    public class DateTimeConverter : JsonConverter
+    public class UtcDateTimeConverter : JsonConverter
     {
         public override object ReadJson(
             JsonReader reader,

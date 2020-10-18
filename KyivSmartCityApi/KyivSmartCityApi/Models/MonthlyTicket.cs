@@ -11,7 +11,7 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("balance")]
         public int Balance { get; set; }
         [JsonProperty("valid_until")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime ValidTo { get; set; }
     }
 }

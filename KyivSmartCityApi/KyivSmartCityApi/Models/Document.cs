@@ -18,12 +18,12 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("number")]
         public string Number { get; set; }
         [JsonProperty("issueDate")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime IssueDate { get; set; }
         [JsonProperty("issuedBy")]
         public string IssuedBy { get; set; }
         [JsonProperty("expiryDate")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime ExpiryDate { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("transport_type")]
         public string TransportType { get; set; }
         [JsonProperty("issued_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
     }
 }
