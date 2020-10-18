@@ -48,5 +48,6 @@ namespace KyivSmartCityApi
             return res.Trips;
         }
 
+        public async Task<SmartCardInfo>
     }
 }
