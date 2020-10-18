@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KyivSmartCityApi.Models;
@@ -16,6 +17,8 @@ namespace KyivSmartCityApi.Example
             {
                 Console.WriteLine($"[Id: {feed.Id}]\t[Title: {feed.Title}]\t[Description: {feed.Description}]");
             }
+            var feedItem = await client.GetFeedAsync(feeds.First().Id);
+            Console.WriteLine($"[Id: {feedItem.Id}]\t[Title: {feedItem.Title}]\t[Description: {feedItem.Description}]");
         }
     }
 }
