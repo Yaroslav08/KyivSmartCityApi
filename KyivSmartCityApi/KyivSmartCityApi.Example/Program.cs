@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Threading.Tasks;
+using KyivSmartCityApi.Models;
 
 namespace KyivSmartCityApi.Example
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            KyivApiClient client = new KyivApiClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLmt5aXZjaXR5Lmdvdi51YVwvYXV0aFwvY2FsbGJhY2siLCJpYXQiOjE2MDI5NTk0NDksImV4cCI6MTYwNTYzNzg0OSwibmJmIjoxNjAyOTU5NDQ5LCJqdGkiOiJkeFRlcWFjdFE2N2ZKVjNlIiwic3ViIjoyNjY4MzcsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qeYWclonqyiNznKLgFWbVr6fnCl8Nv-hkH9cPSq8VOg");
+            var feeds = await client.GetFeeds();
+            foreach (var feed in feeds)
+            {
+                Console.WriteLine($"[Id: {feed.Id}] [Title: {feed.Title}] [Description: {feed.Description}]");
+            }
         }
     }
 }
