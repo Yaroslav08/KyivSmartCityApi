@@ -30,5 +30,10 @@ namespace KyivSmartCityApi
             var res = JsonConvert.DeserializeObject<Result>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync());
             return res.Feed;
         }
+
+        public async Task<Feed> GetFeedAsync(string Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
