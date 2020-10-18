@@ -25,6 +25,12 @@ namespace KyivSmartCityApi
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
+        public async Task<User> GetUserAsync()
+        {
+            var res = JsonConvert.DeserializeObject<User>(await client.GetAsync("api/user/profile").Result.Content.ReadAsStringAsync());
+            return res;
+        }
+
         public async Task<ListDocuments> GetDocumentsAsync()
         {
             var res = JsonConvert.DeserializeObject<ListDocuments>(await client.GetAsync("api/user/documents").Result.Content.ReadAsStringAsync());
