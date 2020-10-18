@@ -48,6 +48,10 @@ namespace KyivSmartCityApi
             return res.Trips;
         }
 
-        public async Task<SmartCardInfo>
+        public async Task<SmartCardInfo> GetSmartCardInfoAsync(int Id)
+        {
+            var res = JsonConvert.DeserializeObject<SmartCardInfo>(await client.GetAsync($"api/card/travel/{Id}/feed").Result.Content.ReadAsStringAsync());
+            return res;
+        }
     }
 }
