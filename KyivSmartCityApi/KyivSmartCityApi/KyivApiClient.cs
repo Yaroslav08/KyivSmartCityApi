@@ -1,8 +1,13 @@
-﻿using System;
+﻿using KyivSmartCityApi.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
 namespace KyivSmartCityApi
 {
     public class KyivApiClient
@@ -18,6 +23,12 @@ namespace KyivSmartCityApi
             client = new HttpClient();
             client.BaseAddress = new Uri(KyivApiUrl);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        }
+
+        public async Task<List<Feed>> GetFeeds()
+        {
+            var res = new { Feed = JsonConvert.DeserializeObject<List<Feed>>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync()) };
+            return res.Feed;
         }
     }
 }

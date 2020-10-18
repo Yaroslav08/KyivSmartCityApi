@@ -1,33 +1,33 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace KyivSmartCityApi.Models
 {
     public class Feed
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int Type { get; set; }
-        [JsonPropertyName("icon")]
+        [JsonProperty("icon")]
         public string Icon { get; set; }
-        [JsonPropertyName("sub_icon")]
+        [JsonProperty("sub_icon")]
         public string SubIcon { get; set; }
-        [JsonPropertyName("read")]
+        [JsonProperty("read")]
         public bool Read { get; set; }
-        [JsonPropertyName("title")]
+        [JsonProperty("title")]
         public string Title { get; set; }
-        [JsonPropertyName("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
-        [JsonPropertyName("value_sum")]
+        [JsonProperty("value_sum")]
         public string ValueSum { get; set; }
-        [JsonPropertyName("value_text")]
+        [JsonProperty("value_text")]
         public string ValueText { get; set; }
-        [JsonPropertyName("value_img")]
+        [JsonProperty("value_img")]
         public string ValueImg { get; set; }
-        [JsonPropertyName("created_at")]
+        [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
     }
 }
