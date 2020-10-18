@@ -36,5 +36,10 @@ namespace KyivSmartCityApi
             var content = await client.GetAsync($"api/feed/{Id}").Result.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<FeedItem>(content);
         }
+
+        public async Task<TravelCards> GetTravelCardsAsync()
+        {
+            return JsonConvert.DeserializeObject<TravelCards>(await client.GetAsync("api/card/travel").Result.Content.ReadAsStringAsync());
+        }
     }
 }

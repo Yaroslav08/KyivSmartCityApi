@@ -17,13 +17,13 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("code")]
         public string Code { get; set; }
         [JsonProperty("locked_at")]
-        public int LockedAt { get; set; }
+        public object LockedAt { get; set; }
         [JsonProperty("balance")]
         public int Balance { get; set; }
         [JsonProperty("balance_wallet")]
         public int BalanceWallet { get; set; }
         [JsonProperty("monthly_ticket")]
-        public int MonthlyTicket { get; set; }
+        public MonthlyTicket MonthlyTicket { get; set; }
         [JsonProperty("monthly_ticket_purchase")]
         public MonthlyTicketPurchase MonthlyTicketPurchase { get; set; }
     }
