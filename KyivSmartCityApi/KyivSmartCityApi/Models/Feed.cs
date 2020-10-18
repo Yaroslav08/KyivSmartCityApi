@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KyivSmartCityApi.Settings;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,7 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("value_img")]
         public string ValueImg { get; set; }
         [JsonProperty("created_at")]
-        public int CreatedAt { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime CreatedAt { get; set; }
     }
 }
