@@ -9,5 +9,8 @@ namespace KyivSmartCityApi.Models
     {
         [JsonProperty("feed")]
         public List<Feed> Feed { get; set; }
+
+        [JsonProperty("history")]
+        public List<Trip> Trips { get; set; }
     }
 }
