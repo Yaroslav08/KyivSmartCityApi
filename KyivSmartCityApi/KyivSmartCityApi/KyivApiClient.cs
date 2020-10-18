@@ -49,6 +49,12 @@ namespace KyivSmartCityApi
             return res;
         }
 
+        public async Task<ResponseBase> RemoveBankCardAsync(int Id)
+        {
+            var res = JsonConvert.DeserializeObject<ResponseBase>(await client.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+            return res;
+        }
+
         public async Task<ListAddresses> GetAddressesAsync()
         {
             var res = JsonConvert.DeserializeObject<ListAddresses>(await client.GetAsync("api/user/addresses").Result.Content.ReadAsStringAsync());
