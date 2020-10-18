@@ -31,5 +31,10 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}\tTitle: {Title}\tDescription: {Description}\tDate: {CreatedAt.ToShortTimeString()} - {CreatedAt.ToShortDateString()}";
+        }
     }
 }
