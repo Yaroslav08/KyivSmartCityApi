@@ -43,6 +43,12 @@ namespace KyivSmartCityApi
             return res;
         }
 
+        public async Task<ListAddresses> GetAddressesAsync()
+        {
+            var res = JsonConvert.DeserializeObject<ListAddresses>(await client.GetAsync("api/user/addresses").Result.Content.ReadAsStringAsync());
+            return res;
+        }
+
         public async Task<List<Feed>> GetFeedsAsync()
         {
             var res = JsonConvert.DeserializeObject<Result>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync());
