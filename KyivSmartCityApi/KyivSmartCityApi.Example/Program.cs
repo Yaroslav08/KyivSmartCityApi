@@ -16,13 +16,6 @@ namespace KyivSmartCityApi.Example
             //var feeds = await client.GetFeedsAsync();
             //var cards = await client.GetTravelCardsAsync();
             //var card = await client.GetTravelCardHistoryAsync(cards.SmartCards.Last().Id);
-            var card = await client.AddSmartCard(new CreateSmartCardModel
-            {
-                Name = "KyivCard",
-                Number = "100003964827",
-                Pin = "8586"
-            });
-            Console.WriteLine(card.Name);
         }
     }
 }

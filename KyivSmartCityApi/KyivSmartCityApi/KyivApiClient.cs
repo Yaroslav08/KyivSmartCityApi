@@ -36,67 +36,57 @@ namespace KyivSmartCityApi
 
         public async Task<User> GetUserAsync()
         {
-            var res = JsonConvert.DeserializeObject<User>(await client.GetAsync("api/user/profile").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<User>(await client.GetStringAsync("api/user/profile"));
         }
 
         public async Task<ListDocuments> GetDocumentsAsync()
         {
-            var res = JsonConvert.DeserializeObject<ListDocuments>(await client.GetAsync("api/user/documents").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<ListDocuments>(await client.GetStringAsync("api/user/documents"));
         }
 
         public async Task<Document> GetDocumentAsync(int Id)
         {
-            var res = JsonConvert.DeserializeObject<Document>(await client.GetAsync($"api/user/documents/{Id}").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<Document>(await client.GetStringAsync($"api/user/documents/{Id}"));
         }
 
         public async Task<ListBankCards> GetBankCardsAsync()
         {
-            var res = JsonConvert.DeserializeObject<ListBankCards>(await client.GetStringAsync("api/card/bank"));
-            return res;
+            return JsonConvert.DeserializeObject<ListBankCards>(await client.GetStringAsync("api/card/bank"));
         }
 
         public async Task<ResponseBase> RemoveBankCardAsync(int Id)
         {
-            var res = JsonConvert.DeserializeObject<ResponseBase>(await client.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<ResponseBase>(await client.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
         }
 
         public async Task<ListAddresses> GetAddressesAsync()
         {
-            var res = JsonConvert.DeserializeObject<ListAddresses>(await client.GetAsync("api/user/addresses").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<ListAddresses>(await client.GetStringAsync("api/user/addresses"));
         }
 
         public async Task<List<Feed>> GetFeedsAsync()
         {
-            var res = JsonConvert.DeserializeObject<Result>(await client.GetAsync("api/feed").Result.Content.ReadAsStringAsync());
-            return res.Feed;
+            return JsonConvert.DeserializeObject<Result>(await client.GetStringAsync("api/feed")).Feed;
         }
 
         public async Task<FeedItem> GetFeedAsync(string Id)
         {
-            var content = await client.GetAsync($"api/feed/{Id}").Result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<FeedItem>(content);
+            return JsonConvert.DeserializeObject<FeedItem>(await client.GetStringAsync($"api/feed/{Id}"));
         }
 
         public async Task<TravelCards> GetTravelCardsAsync()
         {
-            return JsonConvert.DeserializeObject<TravelCards>(await client.GetAsync("api/card/travel").Result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<TravelCards>(await client.GetStringAsync("api/card/travel"));
         }
 
         public async Task<List<Trip>> GetTravelCardHistoryAsync(int Id)
         {
-            var res = JsonConvert.DeserializeObject<Result>(await client.GetAsync($"api/card/travel/{Id}/history").Result.Content.ReadAsStringAsync());
-            return res.Trips;
+            return JsonConvert.DeserializeObject<Result>(await client.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
         }
 
         public async Task<SmartCardInfo> GetSmartCardInfoAsync(int Id)
         {
-            var res = JsonConvert.DeserializeObject<SmartCardInfo>(await client.GetAsync($"api/card/travel/{Id}/feed").Result.Content.ReadAsStringAsync());
-            return res;
+            return JsonConvert.DeserializeObject<SmartCardInfo>(await client.GetStringAsync($"api/card/travel/{Id}/feed"));
         }
     }
 }
