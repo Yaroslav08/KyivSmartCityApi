@@ -34,6 +34,11 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<SmartCard>(res);
         }
 
+        public async Task<Headline> GetHeadlineAsync()
+        {
+            return JsonConvert.DeserializeObject<Headline>(await client.GetStringAsync("api/headline"));
+        }
+
         public async Task<User> GetUserAsync()
         {
             return JsonConvert.DeserializeObject<User>(await client.GetStringAsync("api/user/profile"));
