@@ -44,6 +44,14 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<PhoneModel>(await client.GetStringAsync("api/card/bank/phone"));
         }
 
+        public async Task<TokenModel> RefreshAuth()
+        {
+            var tokenModel = JsonConvert.DeserializeObject<TokenModel>(await client.PostAsync("api/auth/refresh", null).Result.Content.ReadAsStringAsync());
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenModel.AccessToken);
+            return tokenModel;
+        }
+
         public async Task<User> GetUserAsync()
         {
             return JsonConvert.DeserializeObject<User>(await client.GetStringAsync("api/user/profile"));
