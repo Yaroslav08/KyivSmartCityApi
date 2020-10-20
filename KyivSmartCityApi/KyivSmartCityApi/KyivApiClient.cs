@@ -25,6 +25,15 @@ namespace KyivSmartCityApi
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
+
+        public async Task<ResponseBase> AddSmartCard(CreateSmartCardModel model)
+        {
+            var json = JsonConvert.SerializeObject(model);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var res = await client.PostAsync("api/card/travel/add", data).Result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ResponseBase>(res);
+        }
+
         public async Task<User> GetUserAsync()
         {
             var res = JsonConvert.DeserializeObject<User>(await client.GetAsync("api/user/profile").Result.Content.ReadAsStringAsync());
