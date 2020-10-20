@@ -14,15 +14,15 @@ namespace KyivSmartCityApi
     {
         private const string KyivApiUrl = "https://app.kyivcity.gov.ua";
         private string accessToken;
-        private HttpClient client;
+        private HttpClient httpClient;
         public KyivApiClient(string accessToken)
         {
             if (string.IsNullOrEmpty(accessToken))
                 throw new ArgumentNullException($"{nameof(accessToken)} is null");
             this.accessToken = accessToken;
-            client = new HttpClient();
-            client.BaseAddress = new Uri(KyivApiUrl);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(KyivApiUrl);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
 
@@ -30,81 +30,81 @@ namespace KyivSmartCityApi
         {
             var json = JsonConvert.SerializeObject(model);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var res = await client.PostAsync("api/card/travel/add", data).Result.Content.ReadAsStringAsync();
+            var res = await httpClient.PostAsync("api/card/travel/add", data).Result.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<SmartCard>(res);
         }
 
         public async Task<Headline> GetHeadlineAsync()
         {
-            return JsonConvert.DeserializeObject<Headline>(await client.GetStringAsync("api/headline"));
+            return JsonConvert.DeserializeObject<Headline>(await httpClient.GetStringAsync("api/headline"));
         }
 
         public async Task<PhoneModel> GetMasterpassPhone()
         {
-            return JsonConvert.DeserializeObject<PhoneModel>(await client.GetStringAsync("api/card/bank/phone"));
+            return JsonConvert.DeserializeObject<PhoneModel>(await httpClient.GetStringAsync("api/card/bank/phone"));
         }
 
         public async Task<TokenModel> RefreshAuth()
         {
-            var tokenModel = JsonConvert.DeserializeObject<TokenModel>(await client.PostAsync("api/auth/refresh", null).Result.Content.ReadAsStringAsync());
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenModel.AccessToken);
+            var tokenModel = JsonConvert.DeserializeObject<TokenModel>(await httpClient.PostAsync("api/auth/refresh", null).Result.Content.ReadAsStringAsync());
+            httpClient.DefaultRequestHeaders.Clear();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenModel.AccessToken);
             return tokenModel;
         }
 
         public async Task<User> GetUserAsync()
         {
-            return JsonConvert.DeserializeObject<User>(await client.GetStringAsync("api/user/profile"));
+            return JsonConvert.DeserializeObject<User>(await httpClient.GetStringAsync("api/user/profile"));
         }
 
         public async Task<ListDocuments> GetDocumentsAsync()
         {
-            return JsonConvert.DeserializeObject<ListDocuments>(await client.GetStringAsync("api/user/documents"));
+            return JsonConvert.DeserializeObject<ListDocuments>(await httpClient.GetStringAsync("api/user/documents"));
         }
 
         public async Task<Document> GetDocumentAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<Document>(await client.GetStringAsync($"api/user/documents/{Id}"));
+            return JsonConvert.DeserializeObject<Document>(await httpClient.GetStringAsync($"api/user/documents/{Id}"));
         }
 
         public async Task<ListBankCards> GetBankCardsAsync()
         {
-            return JsonConvert.DeserializeObject<ListBankCards>(await client.GetStringAsync("api/card/bank"));
+            return JsonConvert.DeserializeObject<ListBankCards>(await httpClient.GetStringAsync("api/card/bank"));
         }
 
         public async Task<ResponseBase> RemoveBankCardAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<ResponseBase>(await client.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
         }
 
         public async Task<ListAddresses> GetAddressesAsync()
         {
-            return JsonConvert.DeserializeObject<ListAddresses>(await client.GetStringAsync("api/user/addresses"));
+            return JsonConvert.DeserializeObject<ListAddresses>(await httpClient.GetStringAsync("api/user/addresses"));
         }
 
         public async Task<List<Feed>> GetFeedsAsync()
         {
-            return JsonConvert.DeserializeObject<Result>(await client.GetStringAsync("api/feed")).Feed;
+            return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync("api/feed")).Feed;
         }
 
         public async Task<FeedItem> GetFeedAsync(string Id)
         {
-            return JsonConvert.DeserializeObject<FeedItem>(await client.GetStringAsync($"api/feed/{Id}"));
+            return JsonConvert.DeserializeObject<FeedItem>(await httpClient.GetStringAsync($"api/feed/{Id}"));
         }
 
         public async Task<TravelCards> GetTravelCardsAsync()
         {
-            return JsonConvert.DeserializeObject<TravelCards>(await client.GetStringAsync("api/card/travel"));
+            return JsonConvert.DeserializeObject<TravelCards>(await httpClient.GetStringAsync("api/card/travel"));
         }
 
         public async Task<List<Trip>> GetTravelCardHistoryAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<Result>(await client.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
+            return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
         }
 
         public async Task<SmartCardInfo> GetSmartCardInfoAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<SmartCardInfo>(await client.GetStringAsync($"api/card/travel/{Id}/feed"));
+            return JsonConvert.DeserializeObject<SmartCardInfo>(await httpClient.GetStringAsync($"api/card/travel/{Id}/feed"));
         }
     }
 }
