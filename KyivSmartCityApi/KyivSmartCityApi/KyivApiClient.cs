@@ -26,12 +26,12 @@ namespace KyivSmartCityApi
         }
 
 
-        public async Task<ResponseBase> AddSmartCard(CreateSmartCardModel model)
+        public async Task<SmartCard> AddSmartCard(CreateSmartCardModel model)
         {
             var json = JsonConvert.SerializeObject(model);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var res = await client.PostAsync("api/card/travel/add", data).Result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<ResponseBase>(res);
+            return JsonConvert.DeserializeObject<SmartCard>(res);
         }
 
         public async Task<User> GetUserAsync()
