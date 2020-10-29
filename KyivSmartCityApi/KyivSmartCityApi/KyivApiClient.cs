@@ -111,5 +111,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<Subscription>(await httpClient.GetStringAsync("api/user/subscriptions"));
         }
+
+        public async Task<QrCodes> GetQrCodesAsync()
+        {
+            return JsonConvert.DeserializeObject<QrCodes>(await httpClient.GetStringAsync("api/qr"));
+        }
     }
 }
