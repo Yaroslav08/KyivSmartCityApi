@@ -9,6 +9,6 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("balance_wallet")]
         public int BalanceWallet { get; set; }
         [JsonProperty("cards")]
-        public List<BankCard> BankCards { get; set; }
+        public List<BankCard> Cards { get; set; }
     }
 }
