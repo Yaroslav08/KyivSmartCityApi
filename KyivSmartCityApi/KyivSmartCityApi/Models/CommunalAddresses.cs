@@ -9,7 +9,6 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("objects")]
         public Object[] Objects { get; set; }
     }
-
     public class Object
     {
         [JsonProperty("id")]
@@ -21,5 +20,4 @@ namespace KyivSmartCityApi.Models
         [JsonProperty("debt")]
         public int Debt { get; set; }
     }
-
 }

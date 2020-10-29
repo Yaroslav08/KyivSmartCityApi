@@ -126,5 +126,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<WalletReplenish>(await httpClient.GetStringAsync($"api/card/travel/{Id}/wallet-replenishment"));
         }
+
+        public async Task<CommunalAddresses> GetCommunalAddressesAsync()
+        {
+            return JsonConvert.DeserializeObject<CommunalAddresses>(await httpClient.GetStringAsync($"api/utility-objects"));
+        }
     }
 }
