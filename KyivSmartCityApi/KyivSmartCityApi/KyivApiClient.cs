@@ -171,5 +171,15 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<EventsResponse>(await httpClient.GetStringAsync($"api/kyiv-events?type={type}&category={category}&page={page}&lat={lat}&lng={lng}"));
         }
+
+        public async Task<ExpiringQRs> GetExpiringQRsFeedAsync(string id)
+        {
+            return JsonConvert.DeserializeObject<ExpiringQRs>(await httpClient.GetStringAsync($"api/feed/{id}"));
+        }
+
+        public async Task<FaqDetail> GetFaqDetailByIdAsync(long id)
+        {
+            return JsonConvert.DeserializeObject<FaqDetail>(await httpClient.GetStringAsync($"api/faq/{id}"));
+        }
     }
 }
