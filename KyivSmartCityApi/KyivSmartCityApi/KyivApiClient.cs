@@ -186,5 +186,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<FeedFine>(await httpClient.GetStringAsync($"api/feed/{id}"));
         }
+
+        public async Task<FineOrderReceipt> GetFineOrderReceiptByIdAsync(string id)
+        {
+            return JsonConvert.DeserializeObject<FineOrderReceipt>(await httpClient.GetStringAsync($"api/order-receipt/{id}"));
+        }
     }
 }
