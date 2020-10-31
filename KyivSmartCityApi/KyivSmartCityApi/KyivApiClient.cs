@@ -201,5 +201,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<FinesPaymentFeed>(await httpClient.GetStringAsync($"api/penalties/feed?page={page}"));
         }
+
+        public async Task<Fines> GetFinesAsync()
+        {
+            return JsonConvert.DeserializeObject<Fines>(await httpClient.GetStringAsync($"api/penalties"));
+        }
     }
 }
