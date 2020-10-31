@@ -146,5 +146,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<Cars>(await httpClient.GetStringAsync($"api/cars"));
         }
+
+        public async Task<CategoriesFaq> GetCategoriesFaqAsync(string query, int withtop)
+        {
+            return JsonConvert.DeserializeObject<CategoriesFaq>(await httpClient.GetStringAsync($"api/faq?query={query}&with_top={withtop}"));
+        }
     }
 }
