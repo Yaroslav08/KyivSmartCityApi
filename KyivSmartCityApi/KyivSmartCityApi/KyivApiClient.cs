@@ -212,9 +212,14 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<FinesRegions>(await httpClient.GetStringAsync($"api/penalties/regions"));
         }
 
-        public async Task<PublicBudget> GetGbProjects(int page = default, int seed = default, string search = null, List<int> districts = null, List<int> categories = null)
+        public async Task<PublicBudget> GetGbProjectsAsync(int page = default, int seed = default, string search = null, List<int> districts = null, List<int> categories = null)
         {
             return JsonConvert.DeserializeObject<PublicBudget>(await httpClient.GetStringAsync($"api/gb/projects?page={page}&seed={seed}&search={search}&districts={districts}&categories={categories}"));
+        }
+
+        public async Task<PublicBudget> GetGbVotedProjectsAsync(int page = 1)
+        {
+            return JsonConvert.DeserializeObject<PublicBudget>(await httpClient.GetStringAsync($"api/gb/projects/voted?page={page}"));
         }
     }
 }
