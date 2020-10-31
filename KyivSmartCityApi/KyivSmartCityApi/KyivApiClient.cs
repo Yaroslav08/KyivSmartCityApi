@@ -161,5 +161,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<FeedEvacuation>(await httpClient.GetStringAsync($"api/feed/{id}"));
         }
+
+        public async Task<Event> GetEventAsync(long id)
+        {
+            return JsonConvert.DeserializeObject<Event>(await httpClient.GetStringAsync($"api/kyiv-events/{id}"));
+        }
     }
 }
