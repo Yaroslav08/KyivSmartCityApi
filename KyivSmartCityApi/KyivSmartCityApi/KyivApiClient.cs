@@ -136,5 +136,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<CommunalAddresse>(await httpClient.GetStringAsync($"api/utility-objects/{Id}"));
         }
+
+        public async Task<AoAddress> GetAosAsync(string street, string search)
+        {
+            return JsonConvert.DeserializeObject<AoAddress>(await httpClient.GetStringAsync($"api/guess/address/ao?street={street}&search={search}"));
+        }
     }
 }
