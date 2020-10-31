@@ -166,5 +166,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<Event>(await httpClient.GetStringAsync($"api/kyiv-events/{id}"));
         }
+
+        public async Task<EventsResponse> GetEventsAsync(string type, long category = default, int page = default, double lat = default, double lng = default)
+        {
+            return JsonConvert.DeserializeObject<EventsResponse>(await httpClient.GetStringAsync($"api/kyiv-events?type={type}&category={category}&page={page}&lat={lat}&lng={lng}"));
+        }
     }
 }
