@@ -62,7 +62,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<ListDocuments>(await httpClient.GetStringAsync("api/user/documents"));
         }
 
-        public async Task<Document> GetDocumentAsync(int Id)
+        public async Task<Document> GetDocumentByIdAsync(int Id)
         {
             return JsonConvert.DeserializeObject<Document>(await httpClient.GetStringAsync($"api/user/documents/{Id}"));
         }
@@ -72,7 +72,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<ListBankCards>(await httpClient.GetStringAsync("api/card/bank"));
         }
 
-        public async Task<ResponseBase> RemoveBankCardAsync(int Id)
+        public async Task<ResponseBase> RemoveBankCardByIdAsync(int Id)
         {
             return JsonConvert.DeserializeObject<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
         }
@@ -87,7 +87,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync("api/feed")).Feed;
         }
 
-        public async Task<FeedItem> GetFeedAsync(string Id)
+        public async Task<FeedItem> GetFeedByIdAsync(string Id)
         {
             return JsonConvert.DeserializeObject<FeedItem>(await httpClient.GetStringAsync($"api/feed/{Id}"));
         }
@@ -97,12 +97,12 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<TravelCards>(await httpClient.GetStringAsync("api/card/travel"));
         }
 
-        public async Task<List<Trip>> GetTravelCardHistoryAsync(int Id)
+        public async Task<List<Trip>> GetTravelCardHistoryByIdAsync(int Id)
         {
             return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
         }
 
-        public async Task<SmartCardInfo> GetSmartCardInfoAsync(int Id)
+        public async Task<SmartCardInfo> GetSmartCardInfoByIdAsync(int Id)
         {
             return JsonConvert.DeserializeObject<SmartCardInfo>(await httpClient.GetStringAsync($"api/card/travel/{Id}/feed"));
         }
@@ -122,7 +122,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<ZonePrices>(await httpClient.GetStringAsync("api/parking/prices"));
         }
 
-        public async Task<WalletReplenish> GetWalletReplenishmentDataAsync(long Id)
+        public async Task<WalletReplenish> GetWalletReplenishmentDataByIdAsync(long Id)
         {
             return JsonConvert.DeserializeObject<WalletReplenish>(await httpClient.GetStringAsync($"api/card/travel/{Id}/wallet-replenishment"));
         }
@@ -132,7 +132,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<CommunalAddresses>(await httpClient.GetStringAsync($"api/utility-objects"));
         }
 
-        public async Task<CommunalAddresse> GetCommunalAddresseAsync(long Id)
+        public async Task<CommunalAddresse> GetCommunalAddresseByIdAsync(long Id)
         {
             return JsonConvert.DeserializeObject<CommunalAddresse>(await httpClient.GetStringAsync($"api/utility-objects/{Id}"));
         }
@@ -157,12 +157,12 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<StreetAddresses>(await httpClient.GetStringAsync($"api/guess/utility-object/street?search={search}"));
         }
 
-        public async Task<FeedEvacuation> GetEvacuationFeedAsync(string id)
+        public async Task<FeedEvacuation> GetEvacuationFeedByIdAsync(string id)
         {
             return JsonConvert.DeserializeObject<FeedEvacuation>(await httpClient.GetStringAsync($"api/feed/{id}"));
         }
 
-        public async Task<Event> GetEventAsync(long id)
+        public async Task<Event> GetEventByIdAsync(long id)
         {
             return JsonConvert.DeserializeObject<Event>(await httpClient.GetStringAsync($"api/kyiv-events/{id}"));
         }
