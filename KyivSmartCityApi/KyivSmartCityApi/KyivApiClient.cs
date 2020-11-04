@@ -241,5 +241,10 @@ namespace KyivSmartCityApi
         {
             return JsonConvert.DeserializeObject<FeedInfo>(await httpClient.GetStringAsync($"api/feed/{id}"));
         }
+
+        public async Task<KyivSmartCash> GetKyivSmartCash()
+        {
+            return JsonConvert.DeserializeObject<KyivSmartCash>(await httpClient.GetStringAsync($"api/kyivstar-money/data"));
+        }
     }
 }
