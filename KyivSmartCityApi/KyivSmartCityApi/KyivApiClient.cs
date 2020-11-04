@@ -237,7 +237,7 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<HourlyParkingFreeTimes>(await httpClient.GetStringAsync($"api/hourly-parking/free-hours"));
         }
 
-        public async Task<FeedInfo> GetInfoFeed(string id)
+        public async Task<FeedInfo> GetInfoFeedById(string id)
         {
             return JsonConvert.DeserializeObject<FeedInfo>(await httpClient.GetStringAsync($"api/feed/{id}"));
         }
