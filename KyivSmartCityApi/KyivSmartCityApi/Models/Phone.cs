@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 namespace KyivSmartCityApi.Models
 {
-    public class PhoneModel
+    public class Phone 
     {
         [JsonProperty("phone")]
-        public string Phone { get; set; }
+        public string phone { get; set; }
     }
 }
