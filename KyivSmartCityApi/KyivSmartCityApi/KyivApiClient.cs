@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -34,14 +35,19 @@ namespace KyivSmartCityApi
             return JsonConvert.DeserializeObject<SmartCard>(res);
         }
 
+        public async Task<ResponseBase> RemoveBankCardByIdAsync(int Id)
+        {
+            return JsonConvert.DeserializeObject<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+        }
+
         public async Task<Headline> GetHeadlineAsync()
         {
-            return JsonConvert.DeserializeObject<Headline>(await httpClient.GetStringAsync("api/headline"));
+            return await httpClient.GetFromJsonAsync<Headline>("api/headline");
         }
 
         public async Task<Phone> GetMasterpassPhone()
         {
-            return JsonConvert.DeserializeObject<Phone>(await httpClient.GetStringAsync("api/card/bank/phone"));
+            return await httpClient.GetFromJsonAsync<Phone>("api/card/bank/phone");
         }
 
         public async Task<TokenModel> RefreshAuth()
@@ -54,32 +60,27 @@ namespace KyivSmartCityApi
 
         public async Task<User> GetUserAsync()
         {
-            return JsonConvert.DeserializeObject<User>(await httpClient.GetStringAsync("api/user/profile"));
+            return await httpClient.GetFromJsonAsync<User>("api/user/profile");
         }
 
         public async Task<ListDocuments> GetDocumentsAsync()
         {
-            return JsonConvert.DeserializeObject<ListDocuments>(await httpClient.GetStringAsync("api/user/documents"));
+            return await httpClient.GetFromJsonAsync<ListDocuments>("api/user/documents");
         }
 
         public async Task<Document> GetDocumentByIdAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<Document>(await httpClient.GetStringAsync($"api/user/documents/{Id}"));
+            return await httpClient.GetFromJsonAsync<Document>($"api/user/documents/{Id}");
         }
 
         public async Task<ListBankCards> GetBankCardsAsync()
         {
-            return JsonConvert.DeserializeObject<ListBankCards>(await httpClient.GetStringAsync("api/card/bank"));
-        }
-
-        public async Task<ResponseBase> RemoveBankCardByIdAsync(int Id)
-        {
-            return JsonConvert.DeserializeObject<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+            return await httpClient.GetFromJsonAsync<ListBankCards>("api/card/bank");
         }
 
         public async Task<ListAddresses> GetAddressesAsync()
         {
-            return JsonConvert.DeserializeObject<ListAddresses>(await httpClient.GetStringAsync("api/user/addresses"));
+            return await httpClient.GetFromJsonAsync<ListAddresses>("api/user/addresses");
         }
 
         public async Task<List<Feed>> GetFeedsAsync()
@@ -89,12 +90,12 @@ namespace KyivSmartCityApi
 
         public async Task<FeedItem> GetFeedByIdAsync(string Id)
         {
-            return JsonConvert.DeserializeObject<FeedItem>(await httpClient.GetStringAsync($"api/feed/{Id}"));
+            return await httpClient.GetFromJsonAsync<FeedItem>($"api/feed/{Id}");
         }
 
         public async Task<TravelCards> GetTravelCardsAsync()
         {
-            return JsonConvert.DeserializeObject<TravelCards>(await httpClient.GetStringAsync("api/card/travel"));
+            return await httpClient.GetFromJsonAsync<TravelCards>("api/card/travel");
         }
 
         public async Task<List<Trip>> GetTravelCardHistoryByIdAsync(int Id)
@@ -104,152 +105,152 @@ namespace KyivSmartCityApi
 
         public async Task<SmartCardInfo> GetSmartCardInfoByIdAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<SmartCardInfo>(await httpClient.GetStringAsync($"api/card/travel/{Id}/feed"));
+            return await httpClient.GetFromJsonAsync<SmartCardInfo>($"api/card/travel/{Id}/feed");
         }
 
         public async Task<Subscription> GetSubscriptionsAsync()
         {
-            return JsonConvert.DeserializeObject<Subscription>(await httpClient.GetStringAsync("api/user/subscriptions"));
+            return await httpClient.GetFromJsonAsync<Subscription>("api/user/subscriptions");
         }
 
         public async Task<QrCodes> GetQrCodesAsync()
         {
-            return JsonConvert.DeserializeObject<QrCodes>(await httpClient.GetStringAsync("api/qr"));
+            return await httpClient.GetFromJsonAsync<QrCodes>("api/qr");
         }
 
         public async Task<ZonePrices> GetZonePricesAsync()
         {
-            return JsonConvert.DeserializeObject<ZonePrices>(await httpClient.GetStringAsync("api/parking/prices"));
+            return await httpClient.GetFromJsonAsync<ZonePrices>("api/parking/prices");
         }
 
         public async Task<WalletReplenish> GetWalletReplenishmentDataByIdAsync(long Id)
         {
-            return JsonConvert.DeserializeObject<WalletReplenish>(await httpClient.GetStringAsync($"api/card/travel/{Id}/wallet-replenishment"));
+            return await httpClient.GetFromJsonAsync<WalletReplenish>($"api/card/travel/{Id}/wallet-replenishment");
         }
 
         public async Task<CommunalAddresses> GetCommunalAddressesAsync()
         {
-            return JsonConvert.DeserializeObject<CommunalAddresses>(await httpClient.GetStringAsync($"api/utility-objects"));
+            return await httpClient.GetFromJsonAsync<CommunalAddresses>($"api/utility-objects");
         }
 
         public async Task<CommunalAddresse> GetCommunalAddresseByIdAsync(long Id)
         {
-            return JsonConvert.DeserializeObject<CommunalAddresse>(await httpClient.GetStringAsync($"api/utility-objects/{Id}"));
+            return await httpClient.GetFromJsonAsync<CommunalAddresse>($"api/utility-objects/{Id}");
         }
 
         public async Task<AoAddress> GetAosAsync(string street, string search)
         {
-            return JsonConvert.DeserializeObject<AoAddress>(await httpClient.GetStringAsync($"api/guess/address/ao?street={street}&search={search}"));
+            return await httpClient.GetFromJsonAsync<AoAddress>($"api/guess/address/ao?street={street}&search={search}");
         }
 
         public async Task<Cars> GetCarsAsync()
         {
-            return JsonConvert.DeserializeObject<Cars>(await httpClient.GetStringAsync($"api/cars"));
+            return await httpClient.GetFromJsonAsync<Cars>($"api/cars");
         }
 
         public async Task<CategoriesFaq> GetCategoriesFaqAsync(string query, int withtop)
         {
-            return JsonConvert.DeserializeObject<CategoriesFaq>(await httpClient.GetStringAsync($"api/faq?query={query}&with_top={withtop}"));
+            return await httpClient.GetFromJsonAsync<CategoriesFaq>($"api/faq?query={query}&with_top={withtop}");
         }
 
         public async Task<StreetAddresses> GetCommunalStreetsAsync(string search)
         {
-            return JsonConvert.DeserializeObject<StreetAddresses>(await httpClient.GetStringAsync($"api/guess/utility-object/street?search={search}"));
+            return await httpClient.GetFromJsonAsync<StreetAddresses>($"api/guess/utility-object/street?search={search}");
         }
 
         public async Task<FeedEvacuation> GetEvacuationFeedByIdAsync(string id)
         {
-            return JsonConvert.DeserializeObject<FeedEvacuation>(await httpClient.GetStringAsync($"api/feed/{id}"));
+            return await httpClient.GetFromJsonAsync<FeedEvacuation>($"api/feed/{id}");
         }
 
         public async Task<Event> GetEventByIdAsync(long id)
         {
-            return JsonConvert.DeserializeObject<Event>(await httpClient.GetStringAsync($"api/kyiv-events/{id}"));
+            return await httpClient.GetFromJsonAsync<Event>($"api/kyiv-events/{id}");
         }
 
         public async Task<EventsResponse> GetEventsAsync(string type, long category = default, int page = default, double lat = default, double lng = default)
         {
-            return JsonConvert.DeserializeObject<EventsResponse>(await httpClient.GetStringAsync($"api/kyiv-events?type={type}&category={category}&page={page}&lat={lat}&lng={lng}"));
+            return await httpClient.GetFromJsonAsync<EventsResponse>($"api/kyiv-events?type={type}&category={category}&page={page}&lat={lat}&lng={lng}");
         }
 
         public async Task<ExpiringQRs> GetExpiringQRsFeedAsync(string id)
         {
-            return JsonConvert.DeserializeObject<ExpiringQRs>(await httpClient.GetStringAsync($"api/feed/{id}"));
+            return await httpClient.GetFromJsonAsync<ExpiringQRs>($"api/feed/{id}");
         }
 
         public async Task<FaqDetail> GetFaqDetailByIdAsync(long id)
         {
-            return JsonConvert.DeserializeObject<FaqDetail>(await httpClient.GetStringAsync($"api/faq/{id}"));
+            return await httpClient.GetFromJsonAsync<FaqDetail>($"api/faq/{id}");
         }
 
         public async Task<FeedFine> GetFineFeedByIdAsync(string id)
         {
-            return JsonConvert.DeserializeObject<FeedFine>(await httpClient.GetStringAsync($"api/feed/{id}"));
+            return await httpClient.GetFromJsonAsync<FeedFine>($"api/feed/{id}");
         }
 
         public async Task<FineOrderReceipt> GetFineOrderReceiptByIdAsync(string id)
         {
-            return JsonConvert.DeserializeObject<FineOrderReceipt>(await httpClient.GetStringAsync($"api/order-receipt/{id}"));
+            return await httpClient.GetFromJsonAsync<FineOrderReceipt>($"api/order-receipt/{id}");
         }
 
         public async Task<FinePayment> GetFinePaymentDetailsByIdAsync(string id)
         {
-            return JsonConvert.DeserializeObject<FinePayment>(await httpClient.GetStringAsync($"api/penalties/{id}"));
+            return await httpClient.GetFromJsonAsync<FinePayment>($"api/penalties/{id}");
         }
 
         public async Task<FinesPaymentFeed> GetFinePaymentsFeedAsync(int page = 1)
         {
-            return JsonConvert.DeserializeObject<FinesPaymentFeed>(await httpClient.GetStringAsync($"api/penalties/feed?page={page}"));
+            return await httpClient.GetFromJsonAsync<FinesPaymentFeed>($"api/penalties/feed?page={page}");
         }
 
         public async Task<Fines> GetFinesAsync()
         {
-            return JsonConvert.DeserializeObject<Fines>(await httpClient.GetStringAsync($"api/penalties"));
+            return await httpClient.GetFromJsonAsync<Fines>($"api/penalties");
         }
 
         public async Task<FinesRegions> GetFinesRegionsAsync()
         {
-            return JsonConvert.DeserializeObject<FinesRegions>(await httpClient.GetStringAsync($"api/penalties/regions"));
+            return await httpClient.GetFromJsonAsync<FinesRegions>($"api/penalties/regions");
         }
 
         public async Task<PublicBudget> GetGbProjectsAsync(int page = default, int seed = default, string search = null, List<int> districts = null, List<int> categories = null)
         {
-            return JsonConvert.DeserializeObject<PublicBudget>(await httpClient.GetStringAsync($"api/gb/projects?page={page}&seed={seed}&search={search}&districts={districts}&categories={categories}"));
+            return await httpClient.GetFromJsonAsync<PublicBudget>($"api/gb/projects?page={page}&seed={seed}&search={search}&districts={districts}&categories={categories}");
         }
 
         public async Task<PublicBudget> GetGbVotedProjectsAsync(int page = 1)
         {
-            return JsonConvert.DeserializeObject<PublicBudget>(await httpClient.GetStringAsync($"api/gb/projects/voted?page={page}"));
+            return await httpClient.GetFromJsonAsync<PublicBudget>($"api/gb/projects/voted?page={page}");
         }
 
         public async Task<HourlyParking> GetHourlyParkingAsync()
         {
-            return JsonConvert.DeserializeObject<HourlyParking>(await httpClient.GetStringAsync($"api/hourly-parking/data"));
+            return await httpClient.GetFromJsonAsync<HourlyParking>($"api/hourly-parking/data");
         }
 
         public async Task<HourlyParkingFeed> GetHourlyParkingFeedAsync(int page = 1)
         {
-            return JsonConvert.DeserializeObject<HourlyParkingFeed>(await httpClient.GetStringAsync($"api/hourly-parking/feed"));
+            return await httpClient.GetFromJsonAsync<HourlyParkingFeed>($"api/hourly-parking/feed");
         }
 
         public async Task<HourlyParkingFreeTimes> GetHourlyParkingFreeTimesAsync()
         {
-            return JsonConvert.DeserializeObject<HourlyParkingFreeTimes>(await httpClient.GetStringAsync($"api/hourly-parking/free-hours"));
+            return await httpClient.GetFromJsonAsync<HourlyParkingFreeTimes>($"api/hourly-parking/free-hours");
         }
 
         public async Task<FeedInfo> GetInfoFeedById(string id)
         {
-            return JsonConvert.DeserializeObject<FeedInfo>(await httpClient.GetStringAsync($"api/feed/{id}"));
+            return await httpClient.GetFromJsonAsync<FeedInfo>($"api/feed/{id}");
         }
 
         public async Task<KyivSmartCash> GetKyivSmartCash()
         {
-            return JsonConvert.DeserializeObject<KyivSmartCash>(await httpClient.GetStringAsync($"api/kyivstar-money/data"));
+            return await httpClient.GetFromJsonAsync<KyivSmartCash>($"api/kyivstar-money/data");
         }
 
         public async Task<KyivSmartCashPhone> GetKyivSmartCashPhone()
         {
-            return JsonConvert.DeserializeObject<KyivSmartCashPhone>(await httpClient.GetStringAsync($"api/kyivstar-money/phone"));
+            return await httpClient.GetFromJsonAsync<KyivSmartCashPhone>($"api/kyivstar-money/phone");
         }
     }
 }
