@@ -1,6 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
