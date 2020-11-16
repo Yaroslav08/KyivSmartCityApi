@@ -15,7 +15,7 @@ namespace KyivSmartCityApi
     public class KyivApiClient
     {
         private string accessToken;
-        private HttpClient httpClient;
+        private readonly HttpClient httpClient;
         public KyivApiClient(string accessToken)
         {
             if (string.IsNullOrEmpty(accessToken))
