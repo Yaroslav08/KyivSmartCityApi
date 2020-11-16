@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class WalletReplenish
     {
-        [JsonProperty("balance_wallet")]
+        [JsonPropertyName("balance_wallet")]
         public int BalanceWallet { get; set; }
-        [JsonProperty("cards")]
+        [JsonPropertyName("cards")]
         public List<BankCard> Cards { get; set; }
     }
 }

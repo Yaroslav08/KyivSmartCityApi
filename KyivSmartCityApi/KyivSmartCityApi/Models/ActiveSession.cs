@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,18 +7,18 @@ namespace KyivSmartCityApi.Models
 {
     public class ActiveSession
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         private int Id { get; set; }
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         private DateTime CreatedAt { get; set; }
-        [JsonProperty("car")]
+        [JsonPropertyName("car")]
         private Car Car { get; set; }
-        [JsonProperty("lasts_for")]
+        [JsonPropertyName("lasts_for")]
         private long LastsFor { get; set; }
-        [JsonProperty("place")]
+        [JsonPropertyName("place")]
         private HourlyParkingZone Place { get; set; }
-        [JsonProperty("sum")]
+        [JsonPropertyName("sum")]
         private int Sum { get; set; }
     }
 }

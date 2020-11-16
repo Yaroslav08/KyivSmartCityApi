@@ -1,11 +1,12 @@
 ﻿using KyivSmartCityApi.Models;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -29,15 +30,15 @@ namespace KyivSmartCityApi
 
         public async Task<SmartCard> AddSmartCard(CreateSmartCardModel model)
         {
-            var json = JsonConvert.SerializeObject(model);
+            var json = System.Text.Json.JsonSerializer.Serialize(model);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var res = await httpClient.PostAsync("api/card/travel/add", data).Result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<SmartCard>(res);
+            var res = await httpClient.PostAsJsonAsync("api/card/travel/add", data);
+            return JsonSerializer.Deserialize<SmartCard>(await res.Content.ReadAsStringAsync());
         }
 
         public async Task<ResponseBase> RemoveBankCardByIdAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+            return System.Text.Json.JsonSerializer.Deserialize<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
         }
 
         public async Task<Headline> GetHeadlineAsync()
@@ -52,7 +53,7 @@ namespace KyivSmartCityApi
 
         public async Task<TokenModel> RefreshAuth()
         {
-            var tokenModel = JsonConvert.DeserializeObject<TokenModel>(await httpClient.PostAsync("api/auth/refresh", null).Result.Content.ReadAsStringAsync());
+            var tokenModel = JsonSerializer.Deserialize<TokenModel>(await httpClient.PostAsync("api/auth/refresh", null).Result.Content.ReadAsStringAsync());
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenModel.AccessToken);
             return tokenModel;
@@ -85,7 +86,7 @@ namespace KyivSmartCityApi
 
         public async Task<List<Feed>> GetFeedsAsync()
         {
-            return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync("api/feed")).Feed;
+            return JsonSerializer.Deserialize<Result>(await httpClient.GetStringAsync("api/feed")).Feed;
         }
 
         public async Task<FeedItem> GetFeedByIdAsync(string Id)
@@ -100,7 +101,7 @@ namespace KyivSmartCityApi
 
         public async Task<List<Trip>> GetTravelCardHistoryByIdAsync(int Id)
         {
-            return JsonConvert.DeserializeObject<Result>(await httpClient.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
+            return JsonSerializer.Deserialize<Result>(await httpClient.GetStringAsync($"api/card/travel/{Id}/history")).Trips;
         }
 
         public async Task<SmartCardInfo> GetSmartCardInfoByIdAsync(int Id)

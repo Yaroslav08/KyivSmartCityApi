@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class Places
     {
-        [JsonProperty("closest")]
+        [JsonPropertyName("closest")]
         public HourlyParkingZone Closest { get; set; }
-        [JsonProperty("zones")]
+        [JsonPropertyName("zones")]
         public Dictionary<string, List<HourlyParkingZone>> Zones { get; set; }
 
     }

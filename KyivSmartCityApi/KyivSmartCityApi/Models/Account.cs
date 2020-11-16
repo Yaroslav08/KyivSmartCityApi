@@ -1,20 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 namespace KyivSmartCityApi.Models
 {
     public class Account
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         public string Icon { get; set; }
-        [JsonProperty("connected")]
+        [JsonPropertyName("connected")]
         public bool Connected { get; set; }
-        [JsonProperty("connect_link")]
+        [JsonPropertyName("connect_link")]
         public string ConnectLink { get; set; }
     }
 }

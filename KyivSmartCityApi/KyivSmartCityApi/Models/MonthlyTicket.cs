@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ namespace KyivSmartCityApi.Models
 {
     public class MonthlyTicket
     {
-        [JsonProperty("balance")]
+        [JsonPropertyName("balance")]
         public int Balance { get; set; }
-        [JsonProperty("valid_until")]
+        [JsonPropertyName("valid_until")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime ValidTo { get; set; }
     }

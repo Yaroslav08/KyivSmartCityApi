@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,22 +7,22 @@ namespace KyivSmartCityApi.Models
 {
     public class Document
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
-        [JsonProperty("type_text")]
+        [JsonPropertyName("type_text")]
         public string TypeText { get; set; }
-        [JsonProperty("series")]
+        [JsonPropertyName("series")]
         public string Series { get; set; }
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
-        [JsonProperty("issueDate")]
+        [JsonPropertyName("issueDate")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime IssueDate { get; set; }
-        [JsonProperty("issuedBy")]
+        [JsonPropertyName("issuedBy")]
         public string IssuedBy { get; set; }
-        [JsonProperty("expiryDate")]
+        [JsonPropertyName("expiryDate")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime ExpiryDate { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class KyivSmartCash
     {
-        [JsonProperty("available")]
+        [JsonPropertyName("available")]
         public bool Available { get; set; }
-        [JsonProperty("cashback")]
+        [JsonPropertyName("cashback")]
         public string Cashback { get; set; }
     }
 }

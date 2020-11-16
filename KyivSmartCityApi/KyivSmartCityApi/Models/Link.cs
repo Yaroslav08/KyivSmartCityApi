@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,11 +6,11 @@ namespace KyivSmartCityApi.Models
 {
     public class Link
     {
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         private string Icon { get; set; }
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         private string Text { get; set; }
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         private string Url { get; set; }
     }
 }

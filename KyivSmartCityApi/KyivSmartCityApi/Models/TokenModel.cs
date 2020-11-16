@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,11 +8,11 @@ namespace KyivSmartCityApi.Models
 {
     public class TokenModel
     {
-        [JsonProperty("access_token")]
+        [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
-        [JsonProperty("token_type")]
+        [JsonPropertyName("token_type")]
         public string TokenType { get; set; }
-        [JsonProperty("expires_in")]
+        [JsonPropertyName("expires_in")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime TokenUpTo { get; set; }
     }

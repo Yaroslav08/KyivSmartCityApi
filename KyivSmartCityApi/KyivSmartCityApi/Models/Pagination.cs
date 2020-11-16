@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,17 +6,17 @@ namespace KyivSmartCityApi.Models
 {
     public class Pagination
     {
-        [JsonProperty("count")]
+        [JsonPropertyName("count")]
         private int Count;
-        [JsonProperty("currentPage")]
+        [JsonPropertyName("currentPage")]
         private int CurrentPage;
-        [JsonProperty("links")]
+        [JsonPropertyName("links")]
         private Links Links;
-        [JsonProperty("perPage")]
+        [JsonPropertyName("perPage")]
         private int PerPage;
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         private int Total;
-        [JsonProperty("totalPages")]
+        [JsonPropertyName("totalPages")]
         private int TotalPages;
     }
 }

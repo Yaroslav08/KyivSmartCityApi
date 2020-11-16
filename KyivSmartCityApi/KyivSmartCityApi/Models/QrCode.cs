@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,16 +7,16 @@ namespace KyivSmartCityApi.Models
 {
     public class QrCode
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         private long Id { get; set; }
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         private string Code { get; set; }
-        [JsonProperty("expireAt")]
+        [JsonPropertyName("expireAt")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         private DateTime ExpireAt { get; set; }
-        [JsonProperty("shared")]
+        [JsonPropertyName("shared")]
         private bool IsShared { get; set; }
-        [JsonProperty("used")]
+        [JsonPropertyName("used")]
         private bool IsUsed { get; set; }
     }
 }

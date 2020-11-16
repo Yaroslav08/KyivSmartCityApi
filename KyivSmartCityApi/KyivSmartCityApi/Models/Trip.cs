@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,15 +7,15 @@ namespace KyivSmartCityApi.Models
 {
     public class Trip
     {
-        [JsonProperty("line")]
+        [JsonPropertyName("line")]
         public string Line { get; set; }
-        [JsonProperty("stop_name")]
+        [JsonPropertyName("stop_name")]
         public string StopName { get; set; }
-        [JsonProperty("route_name")]
+        [JsonPropertyName("route_name")]
         public string RouteName { get; set; }
-        [JsonProperty("transport_type")]
+        [JsonPropertyName("transport_type")]
         public string TransportType { get; set; }
-        [JsonProperty("issued_at")]
+        [JsonPropertyName("issued_at")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
     }

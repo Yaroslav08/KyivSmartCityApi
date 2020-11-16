@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class QrCodes
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public int Total { get; set; }
-        [JsonProperty("codes")]
+        [JsonPropertyName("codes")]
         public List<QrCode> Codes { get; set; }
     }
 }

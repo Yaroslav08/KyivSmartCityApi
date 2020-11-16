@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,36 +7,36 @@ namespace KyivSmartCityApi.Models
 {
     public class User
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("open_id")]
+        [JsonPropertyName("open_id")]
         public int OpenId { get; set; }
-        [JsonProperty("first_name")]
+        [JsonPropertyName("first_name")]
         public string Firstname { get; set; }
-        [JsonProperty("middle_name")]
+        [JsonPropertyName("middle_name")]
         public string Middlename { get; set; }
-        [JsonProperty("last_name")]
+        [JsonPropertyName("last_name")]
         public string Lastname { get; set; }
-        [JsonProperty("birthday")]
+        [JsonPropertyName("birthday")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime Birthday { get; set; }
-        [JsonProperty("gender")]
+        [JsonPropertyName("gender")]
         public int Gender { get; set; }
-        [JsonProperty("avatar")]
+        [JsonPropertyName("avatar")]
         public string Avatar { get; set; }
-        [JsonProperty("accounts")]
+        [JsonPropertyName("accounts")]
         public List<Account> Accounts { get; set; }
-        [JsonProperty("login")]
+        [JsonPropertyName("login")]
         public Login Login { get; set; }
-        [JsonProperty("qrs_count")]
+        [JsonPropertyName("qrs_count")]
         public int QRsCount { get; set; }
-        [JsonProperty("travel_cards_count")]
+        [JsonPropertyName("travel_cards_count")]
         public int TravelCardsCount { get; set; }
-        [JsonProperty("bank_cards_count")]
+        [JsonPropertyName("bank_cards_count")]
         public int BankCardsCount { get; set; }
-        [JsonProperty("bankid_connected")]
+        [JsonPropertyName("bankid_connected")]
         public bool BankIdConnected { get; set; }
-        [JsonProperty("feedback_email")]
+        [JsonPropertyName("feedback_email")]
         public string FeedbackEmail { get; set; }
     }
 }

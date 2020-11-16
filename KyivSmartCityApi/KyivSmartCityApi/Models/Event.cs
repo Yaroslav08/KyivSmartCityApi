@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,35 +7,35 @@ namespace KyivSmartCityApi.Models
 {
     public class Event
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
-        [JsonProperty("Address")]
+        [JsonPropertyName("Address")]
         public string Address { get; set; }
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
-        [JsonProperty("body")]
+        [JsonPropertyName("body")]
         public string Body { get; set; }
-        [JsonProperty("start_date")]
+        [JsonPropertyName("start_date")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime StartDate { get; set; }
-        [JsonProperty("finish_date")]
+        [JsonPropertyName("finish_date")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime FinishDate { get; set; }
-        [JsonProperty("average_bill")]
+        [JsonPropertyName("average_bill")]
         public string AverageBill { get; set; }
-        [JsonProperty("image")]
+        [JsonPropertyName("image")]
         public string Image { get; set; }
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Lat { get; set; }
-        [JsonProperty("lng")]
+        [JsonPropertyName("lng")]
         public double Lng { get; set; }
-        [JsonProperty("ticket_mode")]
+        [JsonPropertyName("ticket_mode")]
         public string TicketMode { get; set; }
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
-        [JsonProperty("url_buy_tickets")]
+        [JsonPropertyName("url_buy_tickets")]
         public string UrlBuyTickets { get; set; }
-        [JsonProperty("url_social")]
+        [JsonPropertyName("url_social")]
         public string UrlSocial { get; set; }
     }
 }

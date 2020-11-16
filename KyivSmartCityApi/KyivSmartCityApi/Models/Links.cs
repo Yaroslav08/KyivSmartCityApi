@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class Links
     {
-        [JsonProperty("next")]
+        [JsonPropertyName("next")]
         public string Next { get; set; }
-        [JsonProperty("previous")]
+        [JsonPropertyName("previous")]
         public string Previous { get; set; }
     }
 }

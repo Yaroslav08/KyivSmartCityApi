@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,21 +6,21 @@ namespace KyivSmartCityApi.Models
 {
     public class Card
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
-        [JsonProperty("isSelected")]
+        [JsonPropertyName("isSelected")]
         public bool IsSelected { get; set; }
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public bool IsMain { get; set; }
-        [JsonProperty("mask")]
+        [JsonPropertyName("mask")]
         public string Mask { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public CardType Type { get; set; }
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public string Discount { get; set; }
-        [JsonProperty("expired")]
+        [JsonPropertyName("expired")]
         public bool IsExpired { get; set; }
     }
     public enum CardType

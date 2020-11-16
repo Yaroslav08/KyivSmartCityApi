@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,35 +6,35 @@ namespace KyivSmartCityApi.Models
 {
     public class Address
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public bool Main { get; set; }
-        [JsonProperty("postcode")]
+        [JsonPropertyName("postcode")]
         public string PostCode { get; set; }
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
-        [JsonProperty("area")]
+        [JsonPropertyName("area")]
         public string Area { get; set; }
-        [JsonProperty("district")]
+        [JsonPropertyName("district")]
         public string District { get; set; }
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public string City { get; set; }
-        [JsonProperty("street")]
+        [JsonPropertyName("street")]
         public string Street { get; set; }
-        [JsonProperty("house")]
+        [JsonPropertyName("house")]
         public string House { get; set; }
-        [JsonProperty("frame")]
+        [JsonPropertyName("frame")]
         public string Frame { get; set; }
-        [JsonProperty("flat")]
+        [JsonPropertyName("flat")]
         public string Flat { get; set; }
-        [JsonProperty("street_id")]
+        [JsonPropertyName("street_id")]
         public string StreetId { get; set; }
-        [JsonProperty("ao_id")]
+        [JsonPropertyName("ao_id")]
         public string AoId { get; set; }
-        [JsonProperty("premise_id")]
+        [JsonPropertyName("premise_id")]
         public string PremiseId { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,11 +6,11 @@ namespace KyivSmartCityApi.Models
 {
     public class FinePayment
     {
-        [JsonProperty("cards")]
+        [JsonPropertyName("cards")]
         public List<Card> Cards { get; set; }
-        [JsonProperty("fee_percent")]
+        [JsonPropertyName("fee_percent")]
         public double FeePercent { get; set; }
-        [JsonProperty("penalty")]
+        [JsonPropertyName("penalty")]
         public FinePenalty Penalty { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,20 +7,20 @@ namespace KyivSmartCityApi.Models
 {
     public class FineFeedItem
     {
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         private string Title { get; set; }
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         private string Description { get; set; }
-        [JsonProperty("valueSum")]
+        [JsonPropertyName("valueSum")]
         private int ValueSum { get; set; }
-        [JsonProperty("valueText")]
+        [JsonPropertyName("valueText")]
         private string ValueText { get; set; }
-        [JsonProperty("createdAt")]
+        [JsonPropertyName("createdAt")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         private DateTime CreatedAt { get; set; }
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         private string Icon { get; set; }
-        [JsonProperty("subIcon")]
+        [JsonPropertyName("subIcon")]
         private string SubIcon { get; set; }
     }
 }

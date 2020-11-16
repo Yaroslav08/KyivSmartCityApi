@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class Weather
     {
-        [JsonProperty("temp")]
+        [JsonPropertyName("temp")]
         public int Temp { get; set; }
-        [JsonProperty("condition")]
+        [JsonPropertyName("condition")]
         public int Condition { get; set; }
     }
 }

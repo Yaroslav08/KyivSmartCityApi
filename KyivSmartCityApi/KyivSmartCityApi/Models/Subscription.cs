@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,29 +8,29 @@ namespace KyivSmartCityApi.Models
 
     public class Subscription
     {
-        [JsonProperty("notifications_enabled")]
+        [JsonPropertyName("notifications_enabled")]
         public bool NotificationsEnabled { get; set; }
-        [JsonProperty("categories")]
+        [JsonPropertyName("categories")]
         public List<Category> Categories { get; set; }
     }
 
     public class Category
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("topics")]
+        [JsonPropertyName("topics")]
         public List<Topic> Topics { get; set; }
     }
 
     public class Topic
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("subscribed")]
+        [JsonPropertyName("subscribed")]
         public bool Subscribed { get; set; }
     }
 }

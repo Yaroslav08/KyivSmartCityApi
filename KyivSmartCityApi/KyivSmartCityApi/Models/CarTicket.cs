@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +6,9 @@ namespace KyivSmartCityApi.Models
 {
     public class CarTicket
     {
-        [JsonProperty("period")]
+        [JsonPropertyName("period")]
         public string Period { get; set; }
-        [JsonProperty("zone")]
+        [JsonPropertyName("zone")]
         public int Zone { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,19 +6,19 @@ namespace KyivSmartCityApi.Models
 {
     public class PublicBudget
     {
-        [JsonProperty("faq_category_id")]
+        [JsonPropertyName("faq_category_id")]
         private long FaqCategoryId { get; set; }
-        [JsonProperty("filters")]
+        [JsonPropertyName("filters")]
         private ProjectFilter Filters { get; set; }
-        [JsonProperty("list_sub_title")]
+        [JsonPropertyName("list_sub_title")]
         private string ListSubTitle { get; set; }
-        [JsonProperty("list_title")]
+        [JsonPropertyName("list_title")]
         private string ListTitle { get; set; }
-        [JsonProperty("notification")]
+        [JsonPropertyName("notification")]
         private Notification Notification { get; set; }
-        [JsonProperty("projects")]
+        [JsonPropertyName("projects")]
         private PublicBudgetProjects Projects { get; set; }
-        [JsonProperty("votes_info")]
+        [JsonPropertyName("votes_info")]
         private string VotesInfo { get; set; }
     }
 }

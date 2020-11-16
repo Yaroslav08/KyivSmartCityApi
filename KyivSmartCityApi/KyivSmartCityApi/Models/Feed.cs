@@ -1,5 +1,5 @@
 ﻿using KyivSmartCityApi.Settings;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,27 +8,27 @@ namespace KyivSmartCityApi.Models
 {
     public class Feed
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public int Type { get; set; }
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         public string Icon { get; set; }
-        [JsonProperty("sub_icon")]
+        [JsonPropertyName("sub_icon")]
         public string SubIcon { get; set; }
-        [JsonProperty("read")]
+        [JsonPropertyName("read")]
         public bool Read { get; set; }
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
-        [JsonProperty("value_sum")]
+        [JsonPropertyName("value_sum")]
         public string ValueSum { get; set; }
-        [JsonProperty("value_text")]
+        [JsonPropertyName("value_text")]
         public string ValueText { get; set; }
-        [JsonProperty("value_img")]
+        [JsonPropertyName("value_img")]
         public string ValueImg { get; set; }
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
