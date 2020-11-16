@@ -16,7 +16,7 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("valueText")]
         private string ValueText { get; set; }
         [JsonPropertyName("createdAt")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         private DateTime CreatedAt { get; set; }
         [JsonPropertyName("icon")]
         private string Icon { get; set; }

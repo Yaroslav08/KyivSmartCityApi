@@ -23,13 +23,13 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("description")]
         public string Description { get; set; }
         [JsonPropertyName("value_sum")]
-        public string ValueSum { get; set; }
+        public int? ValueSum { get; set; }
         [JsonPropertyName("value_text")]
         public string ValueText { get; set; }
         [JsonPropertyName("value_img")]
         public string ValueImg { get; set; }
         [JsonPropertyName("created_at")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
         public override string ToString()

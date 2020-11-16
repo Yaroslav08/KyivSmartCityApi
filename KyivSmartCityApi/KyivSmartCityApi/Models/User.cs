@@ -18,7 +18,7 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("last_name")]
         public string Lastname { get; set; }
         [JsonPropertyName("birthday")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Birthday { get; set; }
         [JsonPropertyName("gender")]
         public int Gender { get; set; }

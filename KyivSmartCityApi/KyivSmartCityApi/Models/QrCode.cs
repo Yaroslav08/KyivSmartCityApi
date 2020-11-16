@@ -12,7 +12,7 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("code")]
         private string Code { get; set; }
         [JsonPropertyName("expireAt")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         private DateTime ExpireAt { get; set; }
         [JsonPropertyName("shared")]
         private bool IsShared { get; set; }

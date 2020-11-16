@@ -16,10 +16,10 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("averageBill")]
         private string AverageBill { get; set; }
         [JsonPropertyName("startDate")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         private DateTime StartDate { get; set; }
         [JsonPropertyName("finishDate")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         private DateTime FinishDate { get; set; }
         [JsonPropertyName("image")]
         private string Image { get; set; }

@@ -10,7 +10,7 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("id")]
         public string Id { get;set; }
         [JsonPropertyName("created_at")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime CreatedAt { get;set; }
         [JsonPropertyName("title")]
         public string Title { get;set; }

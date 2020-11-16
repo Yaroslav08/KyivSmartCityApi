@@ -13,7 +13,7 @@ namespace KyivSmartCityApi.Models
         [JsonPropertyName("token_type")]
         public string TokenType { get; set; }
         [JsonPropertyName("expires_in")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime TokenUpTo { get; set; }
     }
 }
