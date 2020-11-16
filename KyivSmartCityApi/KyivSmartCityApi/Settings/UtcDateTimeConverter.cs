@@ -2,39 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 
 namespace KyivSmartCityApi.Settings
 {
-    public class UtcDateTimeConverter : JsonConverter
+    public class UtcDateTimeConverter : JsonConverter<DateTime>
     {
-        public override object ReadJson(
-            JsonReader reader,
-            Type objectType,
-            object existingValue,
-            JsonSerializer serializer)
-        {
-            long ts = serializer.Deserialize<long>(reader);
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => 
+            new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(Convert.ToInt64(reader.GetString()));
 
-            DateTime sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return sTime.AddSeconds(ts);
-        }
-
-        public override bool CanConvert(Type type)
-        {
-            return typeof(DateTime).IsAssignableFrom(type);
-        }
-
-        public override void WriteJson(
-            JsonWriter writer,
-            object value,
-            JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
-        }
-
-        public override bool CanRead
-        {
-            get { return true; }
         }
     }
 }

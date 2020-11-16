@@ -8,12 +8,12 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using KyivSmartCityApi.Settings;
 
 namespace KyivSmartCityApi
 {
     public class KyivApiClient
     {
-        private const string KyivApiUrl = "https://app.kyivcity.gov.ua";
         private string accessToken;
         private HttpClient httpClient;
         public KyivApiClient(string accessToken)
@@ -22,7 +22,7 @@ namespace KyivSmartCityApi
                 throw new ArgumentNullException($"{nameof(accessToken)} is null");
             this.accessToken = accessToken;
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(KyivApiUrl);
+            httpClient.BaseAddress = new Uri(Config.KyivApiUrl);
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
