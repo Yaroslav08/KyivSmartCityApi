@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/v/KyivSmartCityApi.svg)](https://www.nuget.org/packages/KyivSmartCityApi)
+
 # Kyiv Smart City Api [unofficial]
 Бібліотека написана на .NET Core 3.1, яка надає можливість читати дані з KyivSmartApi, котрі прив'язані до вашого акаунту.
 
