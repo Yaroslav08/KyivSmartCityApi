@@ -37,7 +37,7 @@ namespace KyivSmartCityApi
 
         public async Task<ResponseBase> RemoveBankCardByIdAsync(int Id)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
+            return JsonSerializer.Deserialize<ResponseBase>(await httpClient.DeleteAsync($"api/card/bank/{Id}").Result.Content.ReadAsStringAsync());
         }
 
         public async Task<Headline> GetHeadlineAsync()
