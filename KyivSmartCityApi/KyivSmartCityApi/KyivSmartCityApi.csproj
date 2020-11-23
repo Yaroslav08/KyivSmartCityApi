@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Yaroslav08</Authors>
+    <RepositoryUrl>https://github.com/Yaroslav08/KyivSmartCityApi</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>1.0 version include almost all reading methods and some methods for Delete bank card and Add SmartCard</Description>
   </PropertyGroup>
 
 </Project>
