@@ -254,7 +254,7 @@ namespace KyivSmartCityApi
             return await httpClient.GetFromJsonAsync<KyivSmartCashPhone>($"api/kyivstar-money/phone");
         }
 
-        public static async Task<AccountInfoResponse> GetCardInfoAsync(string number)
+        public static async Task<AccountInfoResponse> GetCardInfoAsync(string number, string countOfAgreement)
         {
             var http = new HttpClient();
             http.BaseAddress = new Uri("https://api.easypay.ua");
@@ -262,7 +262,7 @@ namespace KyivSmartCityApi
             http.DefaultRequestHeaders.Add("PartnerKey", "easypay-v2");
             http.DefaultRequestHeaders.Add("GoogleClientId", "GA1.2.1454907188.1607702210");
             http.DefaultRequestHeaders.Add("AppId", "5c84f8e7-e5d0-47c5-81bd-03f98fab3abd");
-            var res = await http.PostAsJsonAsync("api/genericPaymentFlow/check", new AccountInfoRequest(number));
+            var res = await http.PostAsJsonAsync("api/genericPaymentFlow/check", new AccountInfoRequest(number, countOfAgreement));
             return await res.Content.ReadFromJsonAsync<AccountInfoResponse>();
         }
     }

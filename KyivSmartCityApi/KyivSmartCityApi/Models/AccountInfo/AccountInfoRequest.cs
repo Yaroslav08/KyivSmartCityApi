@@ -18,7 +18,7 @@ namespace KyivSmartCityApi.Models.AccountInfo
         [JsonPropertyName("multyCheckPaymentStepIndex")]
         public int MultyCheckPaymentStepIndex { get; set; } = 0;
 
-        public AccountInfoRequest(string number)
+        public AccountInfoRequest(string number, string countOfAgreement)
         {
             Fields = new List<FieldDetail>
             {
@@ -30,7 +30,7 @@ namespace KyivSmartCityApi.Models.AccountInfo
                 new FieldDetail
                 {
                     Name = "Agreement",
-                    Value = "50"
+                    Value = countOfAgreement
                 }
             };
         }
