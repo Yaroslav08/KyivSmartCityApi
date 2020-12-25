@@ -17,7 +17,7 @@ namespace KyivSmartCityApi.Models.AccountInfo
         [JsonPropertyName("alias")]
         public string Alias { get; set; }
         [JsonPropertyName("commission")]
-        public int Commission { get; set; }
+        public double Commission { get; set; }
         [JsonPropertyName("loyaltyCommission")]
         public string LoyaltyCommission { get; set; }
         [JsonPropertyName("actionsKeys")]

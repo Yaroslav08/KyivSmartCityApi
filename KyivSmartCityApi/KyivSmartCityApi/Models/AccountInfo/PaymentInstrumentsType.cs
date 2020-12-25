@@ -11,11 +11,11 @@ namespace KyivSmartCityApi.Models.AccountInfo
         [JsonPropertyName("instrumentType")]
         public string InstrumentType { get; set; }
         [JsonPropertyName("commission")]
-        public int Commission { get; set; }
+        public double Commission { get; set; }
         [JsonPropertyName("amountMin")]
-        public int AmountMin { get; set; }
+        public double AmountMin { get; set; }
         [JsonPropertyName("amountMax")]
-        public int AmountMax { get; set; }
+        public double AmountMax { get; set; }
         [JsonPropertyName("userPaymentInstruments")]
         public List<UserPaymentInstrument> UserPaymentInstruments { get; set; }
     }

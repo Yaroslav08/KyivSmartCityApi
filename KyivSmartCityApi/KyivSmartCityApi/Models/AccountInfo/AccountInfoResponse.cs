@@ -17,18 +17,18 @@ namespace KyivSmartCityApi.Models.AccountInfo
         public List<string> FieldsData { get; set; }
 
         [JsonPropertyName("amount")]
-        public int Amount { get; set; }
+        public double Amount { get; set; }
         [JsonPropertyName("amountMax")]
-        public int AmountMax { get; set; }
+        public double AmountMax { get; set; }
         [JsonPropertyName("amountMin")]
-        public int AmountMin { get; set; }
+        public double AmountMin { get; set; }
 
         [JsonPropertyName("preOrderInfo")]
         public string PreOrderInfo { get; set; }
         [JsonPropertyName("masterPassWalletStatus")]
         public string MasterPassWalletStatus { get; set; }
         [JsonPropertyName("masterPassCommission")]
-        public int MasterPassCommission { get; set; }
+        public double MasterPassCommission { get; set; }
         [JsonPropertyName("fieldsLists")]
         public string[] FieldsLists { get; set; }
         [JsonPropertyName("error")]
