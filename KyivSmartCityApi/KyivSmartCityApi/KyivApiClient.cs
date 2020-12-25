@@ -254,7 +254,7 @@ namespace KyivSmartCityApi
             return await httpClient.GetFromJsonAsync<KyivSmartCashPhone>($"api/kyivstar-money/phone");
         }
 
-        public async Task<AccountInfoResponse> GetCardInfoAsync(string number)
+        public static async Task<AccountInfoResponse> GetCardInfoAsync(string number)
         {
             var http = new HttpClient();
             http.BaseAddress = new Uri("https://api.easypay.ua");
