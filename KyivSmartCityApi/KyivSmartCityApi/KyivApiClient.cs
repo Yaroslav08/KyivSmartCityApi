@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using KyivSmartCityApi.Settings;
+using KyivSmartCityApi.Models.AccountInfo;
 
 namespace KyivSmartCityApi
 {
@@ -251,6 +252,18 @@ namespace KyivSmartCityApi
         public async Task<KyivSmartCashPhone> GetKyivSmartCashPhone()
         {
             return await httpClient.GetFromJsonAsync<KyivSmartCashPhone>($"api/kyivstar-money/phone");
+        }
+
+        public async Task<AccountInfoResponse> GetCardInfoAsync(string number)
+        {
+            var http = new HttpClient();
+            http.BaseAddress = new Uri("https://api.easypay.ua");
+            http.DefaultRequestHeaders.Add("PageId", "ed70008d-675e-4dff-9b64-f2a8501f9752");
+            http.DefaultRequestHeaders.Add("PartnerKey", "easypay-v2");
+            http.DefaultRequestHeaders.Add("GoogleClientId", "GA1.2.1454907188.1607702210");
+            http.DefaultRequestHeaders.Add("AppId", "5c84f8e7-e5d0-47c5-81bd-03f98fab3abd");
+            var res = await http.PostAsJsonAsync("api/genericPaymentFlow/check", new AccountInfoRequest(number));
+            return await res.Content.ReadFromJsonAsync<AccountInfoResponse>();
         }
     }
 }
