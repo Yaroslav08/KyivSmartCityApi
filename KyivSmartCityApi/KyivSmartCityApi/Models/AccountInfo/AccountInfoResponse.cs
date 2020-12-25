@@ -10,5 +10,28 @@ namespace KyivSmartCityApi.Models.AccountInfo
     {
         [JsonPropertyName("accountInfo")]
         public AccountInfo Info { get; set; }
+        [JsonPropertyName("bankingDetails")]
+        public BankingDetails BankingDetails { get; set; }
+
+        [JsonPropertyName("fieldsData")]
+        public List<string> FieldsData { get; set; }
+
+        [JsonPropertyName("amount")]
+        public int Amount { get; set; }
+        [JsonPropertyName("amountMax")]
+        public int AmountMax { get; set; }
+        [JsonPropertyName("amountMin")]
+        public int AmountMin { get; set; }
+
+        [JsonPropertyName("preOrderInfo")]
+        public string PreOrderInfo { get; set; }
+        [JsonPropertyName("masterPassWalletStatus")]
+        public string MasterPassWalletStatus { get; set; }
+        [JsonPropertyName("masterPassCommission")]
+        public int MasterPassCommission { get; set; }
+        [JsonPropertyName("fieldsLists")]
+        public string[] FieldsLists { get; set; }
+        [JsonPropertyName("error")]
+        public string Error { get; set; }
     }
 }
