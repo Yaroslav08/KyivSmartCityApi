@@ -9,7 +9,7 @@ namespace KyivSmartCityApi.Models.AccountInfo
     public class AccountInfoResponse
     {
         [JsonPropertyName("accountInfo")]
-        public AccountInfo Info { get; set; }
+        public AccountInfo AccountInfo { get; set; }
         [JsonPropertyName("bankingDetails")]
         public BankingDetails BankingDetails { get; set; }
 
