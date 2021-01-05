@@ -1,5 +1,5 @@
 [![NuGet](https://img.shields.io/nuget/v/KyivSmartCityApi.svg)](https://www.nuget.org/packages/KyivSmartCityApi)
-
+# ```Перестало працювати 05.01.2020```
 # Kyiv Smart City Api [unofficial]
 Бібліотека написана на .NET 5, яка надає можливість читати дані з KyivSmartApi, котрі прив'язані до вашого акаунту.
 
